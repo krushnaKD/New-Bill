@@ -1,11 +1,11 @@
+import { cart } from "../cart.js";
+
 let input = document.querySelector("input")
-
-
 
 let productHTML = ``;
 products.forEach(product => {
-productHTML +=  
-  `<div class="card-container">
+  productHTML +=
+    `<div class="card-container">
         <div class="first-section">
           <img src="${product.image}" alt="" class="img-pic">
         </div>
@@ -23,20 +23,37 @@ productHTML +=
 document.querySelector(".main").innerHTML = productHTML;
 
 
-document.querySelectorAll(".js-cart")
-.forEach(function(btn) {
-    btn.addEventListener("click",function() {
-        console.log(btn.dataset.productId);
-    })
-})
 
-input.addEventListener("input",function(){
-     var matching = products.filter((product)=> {
-      return product.name.startsWith(input.value);
-     })
-     var newuser=""
-     matching.forEach((elem)=> {
-      newuser += `<div class="card-container">
+document.querySelectorAll(".js-cart").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      const productId = btn.dataset.productId;
+      let matchingItem
+      cart.forEach(function(item) {
+        if(productId === item.productId){
+          matchingItem = item
+        }
+      })
+      if (matchingItem) {
+        matchingItem.quantity += 1 
+      }else {
+        cart.push({
+          productId:productId,
+          quantity :1
+        })
+console.log(cart);
+ 
+      }
+    })
+        
+  })
+
+input.addEventListener("input", function () {
+  var matching = products.filter((product) => {
+    return product.name.startsWith(input.value);
+  })
+  var newuser = ""
+  matching.forEach((elem) => {
+    newuser += `<div class="card-container">
         <div class="first-section">
           <img src="${elem.image}" alt="" class="img-pic">
         </div>
@@ -48,12 +65,12 @@ input.addEventListener("input",function(){
           </div>
         </div>
      </div> `
-     })
-document.querySelector(".main").innerHTML = newuser;
-let search = document.querySelectorAll(".search")
-search.forEach(function(btns) {
-    btns.addEventListener("click",function() {
-        console.log(btns.dataset.productId);
+  })
+  document.querySelector(".main").innerHTML = newuser;
+  let search = document.querySelectorAll(".search")
+  search.forEach(function (btns) {
+    btns.addEventListener("click", function () {
+      console.log(btns.dataset.productId);
     })
-})
+  })
 })
