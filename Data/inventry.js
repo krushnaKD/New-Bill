@@ -1,4 +1,4 @@
-const products = [{
+export const products = [{
     productId: 1,
     image:"Data/products/1868094.avif",
     name:"Vanila",
