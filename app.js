@@ -48,7 +48,7 @@ input.addEventListener("input", function () {
   let search = document.querySelectorAll(".search")
   search.forEach(function (btns) {
     btns.addEventListener("click", function () {
-      console.log(btns.dataset.productId);
+      // console.log(btns.dataset.productId);
     })
   })
 })

@@ -40,14 +40,14 @@ body {
     margin-bottom: 50px;
 }
 
-#cart {
+.cart {
     width: 800px;
     border: 1px solid black;
     border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 

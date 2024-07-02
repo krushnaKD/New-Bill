@@ -1,7 +1,13 @@
-export let cart = []
+export const cart = [{
+  productId: '1',
+  quantity:1,
+},{
+  productId:'2',
+  quantity:1,
+}]
 
 
-export  function AddtoCart(productId) {
+export function AddtoCart(productId) {
     let matchingItem
     cart.forEach(function (cartitem) {
       if (productId === cartitem.productId) {
@@ -13,10 +19,11 @@ export  function AddtoCart(productId) {
     } else {
       cart.push({
         productId: productId,
-        quantity: 1
+        quantity: 1,
       })
     }
+    console.log(cart);
   }
   
-let b = document.querySelector("span")
-console.dir(b)
+// let b = document.querySelector("span")
+// console.dir(b)
